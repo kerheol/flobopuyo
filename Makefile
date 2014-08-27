@@ -11,15 +11,14 @@ ENABLE_DGA		= false
 DEBUG_MODE		= false
 
 # Unix/Linux settings
-PREFIX			= /usr/local
-DATADIR			= $(PREFIX)/share/games/flobopuyo
-INSTALL_BINDIR	= $(DESTDIR)/$(PREFIX)/games
-INSTALL_DATADIR	= $(DESTDIR)/$(DATADIR)
+#PREFIX			= /usr/local
+#DATADIR			= $(PREFIX)/share/games/flobopuyo
+#INSTALL_BINDIR	= $(DESTDIR)/$(PREFIX)/games
+#INSTALL_DATADIR	= $(DESTDIR)/$(DATADIR)
 
 ##############
 # Autodetection
-
-PLATFORM	= $(shell uname -s)
+PLATFORM	= Linux
 VERSION		= $(shell grep "\#define FLOBOPUYOVERSION" PuyoVersion.c  | cut -d "\"" -f 2)
 #
 ##############
@@ -153,18 +152,18 @@ clean:
 	rm -f  $(macimage_name).dmg
 	rm -f  .DS_Store */.DS_Store */*/.DS_Store .gdb_history
 
-install: flobopuyo
-	strip flobopuyo
-	mkdir -p ${INSTALL_BINDIR}
-	mkdir -p ${INSTALL_DATADIR}
-	cp -r data/* ${INSTALL_DATADIR}
-	chmod a+rx ${INSTALL_DATADIR}
-	chmod a+rx ${INSTALL_DATADIR}/sfx
-	chmod a+rx ${INSTALL_DATADIR}/gfx
-	chmod a+rx ${INSTALL_DATADIR}/story
-	chmod -R a+r ${INSTALL_DATADIR}
-	cp ./flobopuyo ${INSTALL_BINDIR}/flobopuyo
-	chmod a+rx ${INSTALL_BINDIR}/flobopuyo
+# install: flobopuyo
+# 	strip flobopuyo
+# 	mkdir -p ${INSTALL_BINDIR}
+# 	mkdir -p ${INSTALL_DATADIR}
+# 	cp -r data/* ${INSTALL_DATADIR}
+# 	chmod a+rx ${INSTALL_DATADIR}
+# 	chmod a+rx ${INSTALL_DATADIR}/sfx
+# 	chmod a+rx ${INSTALL_DATADIR}/gfx
+# 	chmod a+rx ${INSTALL_DATADIR}/story
+# 	chmod -R a+r ${INSTALL_DATADIR}
+# 	cp ./flobopuyo ${INSTALL_BINDIR}/flobopuyo
+# 	chmod a+rx ${INSTALL_BINDIR}/flobopuyo
 
 # flobopuyo-static: prelude  ${OBJFILES}
 # 	@echo "[flobopuyo-static]" && g++ $(CFLAGS) -o flobopuyo-static ${OBJFILES}\
